@@ -1,6 +1,6 @@
 # escape=`
 
-FROM microsoft/dotnet-framework-build:4.7.1-windowsservercore-ltsc2016
+FROM microsoft/dotnet-framework-build:4.7.1-windowsservercore-1709
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 # Install web work load.  had to make sure build tools are there or it fails
