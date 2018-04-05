@@ -1,5 +1,5 @@
 # escape=`
-FROM jsturtevant/4.7-windowsservercore-1709-builder:latest as build-agent
+FROM registry20171221043416.azurecr.io/code4clouds/windowscontainerbuilder:latest as build-agent
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 ARG CONFIGURATION=Release
