@@ -7,7 +7,7 @@ ARG CONFIGURATION=Release
 # Build files
 WORKDIR C:\src
 COPY whoami-aspnet\packages.config .
-RUN nuget restore packages.config -PackagesDirectory ..\packages
+RUN nuget restore packages.config -PackagesDirectory .\packages
 
 COPY . C:\src
 RUN echo $env:CONFIGURATION; ` 
