@@ -7,6 +7,7 @@ ARG CONFIGURATION=Release
 # Build files
 WORKDIR C:\src
 COPY whoami-aspnet\packages.config .
+RUN dotnet add package Microsoft.Net.Compilers --version 2.1.0 
 RUN nuget restore packages.config -PackagesDirectory ..\packages
 
 COPY . C:\src
