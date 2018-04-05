@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: windowsaspnetapp
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        k8s-app: windowsaspnetapp
+    spec:
+      containers:
+      - name: windowsaspnetapp
+        image: registry20171221043416.azurecr.io/code4clouds/windowsaspnetapp:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: ".50"
+            memory: 512Mi
+          requests:
+            cpu: ".25"
+            memory: 64Mi
+      imagePullSecrets:
+      - name: myregistrykey
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: windowsaspnetapp
+  labels:
+    k8s-app: windowsaspnetapp
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+    targetPort: 5000
+    protocol: TCP
+    name: http
+  selector:
+    k8s-app: windowsaspnetapp
